@@ -83,6 +83,9 @@ PO ATУTICAKO 2О: 4 САРО
 BEEP 17 Hexagonal column Single-head; 5+6mm 4
 18 Battery case AAA 1
 
+<img width="450" alt="Screenshot 2025-07-07 at 1 44 57 PM" src="https://github.com/user-attachments/assets/1027c8ef-a276-46bb-bba9-8023b1077bd3" />
+
+
 # Schematics 
 Here's where you'll put images of your schematics. [Tinkercad](https://www.tinkercad.com/blog/official-guide-to-tinkercad-circuits) and [Fritzing](https://fritzing.org/learning/) are both great resoruces to create professional schematic diagrams, though BSE recommends Tinkercad becuase it can be done easily and for free in the browser. 
 
