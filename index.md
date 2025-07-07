@@ -60,6 +60,29 @@ For your first milestone, describe what your project is and how you plan to buil
 
 My starter project was a retro arcade using mainly soldering techniques. One large challenge I faced was that I lost more than half the screws so I had to find them in a different room. My next step will be to build my actual project which is smart glasses
 
+Here are the materials 
+
+NO. Name Model/Specification OTY
+1 Buzzer 12mm 5V; Passive 1
+2 Electric capacitor 220uF 16V 1
+Micro USB 4-pin 90 1
+4 Power cable for micro-USB: 50cm 1
+5 Self-switch BxBmm 1
+Self-switch cap red 1
+KEY 7 Digitron display 3631AS 1
+IC Chip with core board STC8G2K1652 1
+g Chip capacitor 10uF 1
+POWER 10 LED dot matrix module 1088BS; 8x8mm 2
+11 Button 12x12x7.3mm 6
+12 Button caр A24 12x12x7.3mm 6
+COWTHCONT 13 PCB 7x9.8mm
+14 Screw M3x5mm 8
+15 Screw M3x8mm 2
+16 Copper column Double-pass: M3x9mm
+PO ATУTICAKO 2О: 4 САРО
+BEEP 17 Hexagonal column Single-head; 5+6mm 4
+18 Battery case AAA 1
+
 # Schematics 
 Here's where you'll put images of your schematics. [Tinkercad](https://www.tinkercad.com/blog/official-guide-to-tinkercad-circuits) and [Fritzing](https://fritzing.org/learning/) are both great resoruces to create professional schematic diagrams, though BSE recommends Tinkercad becuase it can be done easily and for free in the browser. 
 
