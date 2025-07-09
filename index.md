@@ -45,13 +45,12 @@ For your second milestone, explain what you've worked on since your previous mil
 
 **Don't forget to replace the text below with the embedding for your milestone video. Go to Youtube, click Share -> Embed, and copy and paste the code to replace what's below.**
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/CaCazFBhYKs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/CoPw9rdKQRo?si=n4YrnZoTD_a2I4BL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 For your first milestone, describe what your project is and how you plan to build it. You can include:
-  - In my first milestone it was mainly about getting the camera connected to my raspberry pi and to make it work. 
-- I was able to make the camera fully functional. 
-- My computer was not being flexible with the raspberry pi that I had connected to it. 
-- My goal is to have the camera connected to the glasses and make sure that the display on the glasses show up. 
+In my first milestone it was mainly about getting the camera connected to my raspberry pi and to make it work. I was able to make the camera fully functional.  My computer was not being flexible with the raspberry pi that I had connected to it. My goal is to have the camera connected to the glasses and make sure that the display on the glasses show up. 
+
+Throughout my first milestone I encountered errors with my TigerVNC, and my raspberry pi not working. It was most likely something to do with my computer. In this milestone I was able to complete a fully functional camera that records and takes images. 
 
 
 # Starter Project
