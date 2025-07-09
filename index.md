@@ -49,8 +49,7 @@ For your second milestone, explain what you've worked on since your previous mil
 
 For your first milestone, describe what your project is and how you plan to build it. You can include:
 In my first milestone it was mainly about getting the camera connected to my raspberry pi and to make it work. I was able to make the camera fully functional.  My computer was not being flexible with the raspberry pi that I had connected to it. My goal is to have the camera connected to the glasses and make sure that the display on the glasses show up. 
-
-Throughout my first milestone I encountered errors with my TigerVNC, and my raspberry pi not working. It was most likely something to do with my computer. In this milestone I was able to complete a fully functional camera that records and takes images. 
+Throughout my first milestone I encountered errors with my TigerVNC, and my raspberry pi not working. It was most likely something to do with my computer. In order to solve this problem I just had to reboot the coding software and it finally worked. For the Tiger VNC it was a much different story I still wasn't able to connect only to my raspberry pi. Despite these countless errors I was able to complete a working camera that can record for a short period of time. 
 
 
 # Starter Project
