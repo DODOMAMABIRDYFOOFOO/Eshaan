@@ -33,7 +33,7 @@ For your final milestone, explain the outcome of your project. Key details to in
 
 **Don't forget to replace the text below with the embedding for your milestone video. Go to Youtube, click Share -> Embed, and copy and paste the code to replace what's below.**
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/y3VAmNlER5Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="560" height="315" src="[https://www.youtube.com/embed/y3VAmNlER5Y](https://www.youtube.com/watch?v=-fj1hPKtbZc)" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 For your second milestone, explain what you've worked on since your previous milestone. You can highlight:
 - In my second milestone I was able to attach the camera to my glasses, and create a ultrasonic sensor to go along with the attachments. While attaching a camera may sound like a simple job, it wasn't. When I attached the camera to the 3d printed model I created(picture is below), it disrupted a metal piece on my camera which made it not functional. In order to fix this I got a new camera and this time did not repeat the mistake of adding a 3d-printed cover to the lenses. The ultrasonic sensor, on the other hand, was a lot easier since I am extremely familiar with breadboarding and coding these type of snesors. 
@@ -59,6 +59,10 @@ This was the design that failed and that cost me a picamera, as we can see it di
 <img width="513" height="342" alt="Screenshot 2025-07-11 at 11 55 26 AM" src="https://github.com/user-attachments/assets/86f27d32-8de2-4cac-9a81-42519ed92d9c" />
 
 This is the schematic design for the wiring of the buzzer and the ultrasonic sensor to my raspberry pi. I faced a challenge with not having the right resistors but I found out that it was just the ratio of the power that mattered for 1k:2k was the same as 100K:200K. 
+
+
+**Code**
+
 # First Milestone
 
 **Don't forget to replace the text below with the embedding for your milestone video. Go to Youtube, click Share -> Embed, and copy and paste the code to replace what's below.**
