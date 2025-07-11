@@ -62,6 +62,113 @@ This is the schematic design for the wiring of the buzzer and the ultrasonic sen
 
 
 **Code**
+#!/usr/bin/python3
+import RPi.GPIO as GPIO
+import time
+
+
+# === GPIO Setup ===
+GPIO.setmode(GPIO.BCM)
+
+
+# Define pins
+PIN_TRIGGER = 19
+PIN_ECHO = 26
+PIN_BUZZER = 21
+
+
+# Setup pins
+GPIO.setup(PIN_TRIGGER, GPIO.OUT)
+GPIO.setup(PIN_ECHO, GPIO.IN)
+GPIO.setup(PIN_BUZZER, GPIO.OUT)
+
+
+# Initialize
+GPIO.output(PIN_TRIGGER, GPIO.LOW)
+GPIO.output(PIN_BUZZER, GPIO.LOW)
+
+
+print("Waiting for sensor to settle...")
+time.sleep(2)
+
+
+try:
+   while True:
+       # === Trigger ultrasonic pulse ===
+       GPIO.output(PIN_TRIGGER, GPIO.HIGH)
+       time.sleep(0.00001)  # 10 microseconds
+       GPIO.output(PIN_TRIGGER, GPIO.LOW)
+
+
+       # === Wait for echo signal ===
+       timeout = time.time() + 1
+       while GPIO.input(PIN_ECHO) == 0:
+           pulse_start = time.time()
+           if pulse_start > timeout:
+               print("Timeout: No echo received (start)")
+               pulse_start = None
+               break
+
+
+       timeout = time.time() + 1
+       while GPIO.input(PIN_ECHO) == 1:
+           pulse_end = time.time()
+           if pulse_end > timeout:
+               print("Timeout: No echo received (end)")
+               pulse_end = None
+               break
+
+
+       # === Calculate distance ===
+       if 'pulse_start' in locals() and 'pulse_end' in locals() and pulse_start and pulse_end:
+           pulse_duration = pulse_end - pulse_start
+           distance = round(pulse_duration * 17150, 2)
+           print("Distance:", distance, "cm")
+
+
+           # === Buzzer Logic: Beep rate based on distance ===
+           if distance < 1:
+               print("Object is DANGEROUSLY close! Fastest beeping...")
+               beep_time = 0.01
+           elif distance < 3:
+               print("Object is EXTREMELY close! Very fast beeping...")
+               beep_time = 0.05
+           elif distance < 5:
+               print("Object is WAY too close! Fast beeping...")
+               beep_time = 0.1
+           elif distance < 10:
+               print("Object is close! Normal beeping...")
+               beep_time = 0.2
+           elif distance < 100:
+               print("Object detected, slow beep.")
+               beep_time = 0.5
+           else:
+               print("Object far or not detected. No beep.")
+               beep_time = None
+
+
+           if beep_time is not None:
+               GPIO.output(PIN_BUZZER, GPIO.HIGH)
+               time.sleep(beep_time)
+               GPIO.output(PIN_BUZZER, GPIO.LOW)
+               time.sleep(beep_time)
+           else:
+               GPIO.output(PIN_BUZZER, GPIO.LOW)
+               time.sleep(0.5)
+
+
+       else:
+           print("Could not calculate distance.")
+           GPIO.output(PIN_BUZZER, GPIO.LOW)
+           time.sleep(0.5)
+
+
+except KeyboardInterrupt:
+   print("\nStopped by user.")
+
+
+finally:
+   GPIO.cleanup()
 
 # First Milestone
 
