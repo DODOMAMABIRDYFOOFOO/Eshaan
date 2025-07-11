@@ -46,11 +46,15 @@ s which includes adding vibrator to my ultrasonic sensor, I also decided to use 
 
 This was the desing for where I was keeping the camera, as we can see from the design it has a place for the long cable along with a place for the picamera. 
 
+
+
 <img width="250" height="300" alt="Screenshot 2025-07-11 at 11 50 01 AM" src="https://github.com/user-attachments/assets/a7ea8e34-e214-4b2d-937c-690d1222d53b" />
 
 This was the design that failed and that cost me a picamera, as we can see it disrupted the metal thing attached to the camera making it not functional. 
 
 **Schematic Design for breadboard**
+
+
 
 <img width="513" height="342" alt="Screenshot 2025-07-11 at 11 55 26 AM" src="https://github.com/user-attachments/assets/86f27d32-8de2-4cac-9a81-42519ed92d9c" />
 
