@@ -62,6 +62,8 @@ This is the schematic design for the wiring of the buzzer and the ultrasonic sen
 
 
 **Code**
+
+This is the code for the ultrasonic sensor. 
 ```c++
 
 #!/usr/bin/python3
@@ -163,10 +165,285 @@ try:
 except KeyboardInterrupt:
    print("\nStopped by user.")
 ```
+This is the code for the picamera: 
+
+```c++
+# SPDX-FileCopyrightText: 2021 Andrew Reusch for Adafruit Industries
+#
+# SPDX-License-Identifier: MIT
+import time
+import logging
+import argparse
+import pygame
+import os
+import sys
+import numpy as np
+import subprocess
+import re
+
+
+CONFIDENCE_THRESHOLD = 0.5   # at what confidence level do we say we detected a thing
+PERSISTANCE_THRESHOLD = 0.25  # what percentage of the time we have to have seen a thing
+
+
+# App
+from rpi_vision.agent.capture import PiCameraStream
+from rpi_vision.models.teachablemachine import TeachableMachine
+
+
+logging.basicConfig()
+logging.getLogger().setLevel(logging.INFO)
+
+
+# initialize the display
+pygame.init()
+screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+
+
+capture_manager = PiCameraStream(resolution=(screen.get_width(), screen.get_height()), preview=False)
+
+
+def parse_args():
+   parser = argparse.ArgumentParser()
+   parser.add_argument('--include-top', type=bool,
+                       dest='include_top', default=True,
+                       help='Include fully-connected layer at the top of the network.')
+
+
+   parser.add_argument('savedmodel', help='TeachableMachine savedmodel')
+
+
+   parser.add_argument('--tflite',
+                       dest='tflite', action='store_true', default=False,
+                       help='Convert base model to TFLite FlatBuffer, then load model into TFLite Python Interpreter')
+
+
+   parser.add_argument('--rotation', type=int, default=0,
+                       help='Rotation for display in degrees (0, 90, 180, 270)')
+
+
+   args = parser.parse_args()
+   return args
+
+
+last_seen = [None] * 10
+last_spoken = None
+
+
+def validate_target_name(name):
+   # Allow only alphanumeric + underscores + spaces + hyphens, no weird chars
+   return bool(re.match(r'^[\w\s\-]+$', name.strip()))
+
+
+
+
+
+
+def main(args):
+   print("\n--- Target Detection Setup ---")
+   print("Enter one or more target names to detect, separated by commas.")
+   print("Allowed characters: letters, numbers, spaces, underscores, hyphens.")
+   print("Example: cat, dog, blue_car")
+   print("Type 'help' to show this message again.")
+   print("Type 'quit' or 'exit' to stop the program.\n")
+
+
+   while True:
+       user_input = input("Enter target names: ").strip()
+       if user_input.lower() in ('quit', 'exit'):
+           print("Exiting program.")
+           sys.exit(0)
+       if user_input.lower() == 'help':
+           print("\nAllowed characters: letters, numbers, spaces, underscores, hyphens.")
+           print("Example: cat, dog, blue_car\n")
+           continue
+       if not user_input:
+           print("Input cannot be empty. Please enter at least one target name.")
+           continue
+
+
+       # Split by commas and validate each name
+       targets = [t.strip() for t in user_input.split(',')]
+       invalids = [t for t in targets if not validate_target_name(t)]
+       if invalids:
+           print(f"Invalid target names detected: {invalids}")
+           print("Please use only allowed characters (letters, numbers, spaces, underscores, hyphens).")
+           continue
+      
+       print(f"Targets to detect: {targets}")
+       return targets
+
+
+   global last_spoken, capture_manager
+
+
+   # Get user input for targets to detect
+   targets_to_detect = get_user_targets()
+   print("Starting detection for targets:", targets_to_detect)
+
+
+   capture_manager = PiCameraStream(resolution=(screen.get_width(), screen.get_height()), preview=False)
+
+
+   if args.rotation in (0, 180):
+       buffer = pygame.Surface((screen.get_width(), screen.get_height()))
+   else:
+       buffer = pygame.Surface((screen.get_height(), screen.get_width()))
+
+
+   pygame.mouse.set_visible(False)
+   screen.fill((0, 0, 0))
+   try:
+       splash = pygame.image.load(os.path.join(os.path.dirname(sys.argv[0]), 'bchatsplash.bmp'))
+       splash = pygame.transform.rotate(splash, args.rotation)
+       splash = pygame.transform.scale(splash, (min(screen.get_width(), screen.get_height()), min(screen.get_width(), screen.get_height())))
+       screen.blit(splash, ((screen.get_width() - splash.get_width()) // 2, (screen.get_height() - splash.get_height()) // 2))
+   except pygame.error:
+       pass
+   pygame.display.update()
+
+
+   scale = max(buffer.get_height() // capture_manager.resolution[1], 1)
+   scaled_resolution = tuple([x * scale for x in capture_manager.resolution])
+
+
+   smallfont = pygame.font.Font(None, 24 * scale)
+   medfont = pygame.font.Font(None, 36 * scale)
+   bigfont = pygame.font.Font(None, 48 * scale)
+
+
+   # Load your model here; example with MobileNetV2Base if defined
+   model = TeachableMachine(args.savedmodel, include_top=args.include_top, tflite=args.tflite)
+
+
+   capture_manager.start()
+
+
+   while not capture_manager.stopped:
+       for event in pygame.event.get():
+           if event.type == pygame.QUIT:
+               capture_manager.stop()
+               pygame.quit()
+               sys.exit(0)
+           elif event.type == pygame.KEYDOWN:
+               if event.key == pygame.K_ESCAPE:
+                   capture_manager.stop()
+                   pygame.quit()
+                   sys.exit(0)
+
+
+       if capture_manager.frame is None:
+           continue
+
+
+       buffer.fill((0, 0, 0))
+       frame = capture_manager.read()
+       previewframe = np.ascontiguousarray(capture_manager.frame)
+       img = pygame.image.frombuffer(previewframe, capture_manager.resolution, 'RGB')
+       img = pygame.transform.scale(img, scaled_resolution)
+
+
+       cropped_region = (
+           (img.get_width() - buffer.get_width()) // 2,
+           (img.get_height() - buffer.get_height()) // 2,
+           buffer.get_width(),
+           buffer.get_height()
+       )
+       buffer.blit(img, (0, 0), cropped_region)
+
+
+       timestamp = time.monotonic()
+       prediction = model.tflite_predict(frame)[0] if args.tflite else model.predict(frame)[0]
+       delta = time.monotonic() - timestamp
+
+
+       logging.info(prediction)
+       logging.info("%s inference took %d ms, %0.1f FPS" % ("TFLite" if args.tflite else "TF", delta * 1000, 1 / delta))
+
+
+       # Show all targets on screen at top left
+       targets_text = "Targets: " + ", ".join(targets_to_detect)
+       targets_surface = medfont.render(targets_text, True, (0, 200, 255))
+       buffer.blit(targets_surface, (10, 10))
+
+
+       fpstext = "%0.1f FPS" % (1 / delta,)
+       fpstext_surface = smallfont.render(fpstext, True, (255, 0, 0))
+       buffer.blit(fpstext_surface, fpstext_surface.get_rect(topright=(buffer.get_width() - 10, 10)))
+
+
+       try:
+           temp = int(open("/sys/class/thermal/thermal_zone0/temp").read()) / 1000
+           temptext = "%d\N{DEGREE SIGN}C" % temp
+           temptext_surface = smallfont.render(temptext, True, (255, 0, 0))
+           buffer.blit(temptext_surface, temptext_surface.get_rect(topright=(buffer.get_width() - 10, 30)))
+       except OSError:
+           pass
+
+
+       detected_any = False
+
+
+       # Go through predictions and find any target matched above threshold
+       for p in prediction:
+           label, name, conf = p
+           if conf > CONFIDENCE_THRESHOLD and any(name.lower() == target.lower() for target in targets_to_detect):
+               detected_any = True
+
+
+               persistant_obj = False
+               last_seen.append(name)
+               last_seen.pop(0)
+               inferred_times = last_seen.count(name)
+               if inferred_times / len(last_seen) > PERSISTANCE_THRESHOLD:
+                   persistant_obj = True
+
+
+               detecttext = name.replace("_", " ")
+               for f in (bigfont, medfont, smallfont):
+                   detectsize = f.size(detecttext)
+                   if detectsize[0] < screen.get_width():
+                       detecttextfont = f
+                       break
+               else:
+                   detecttextfont = smallfont
+
+
+               detecttext_color = (0, 255, 0) if persistant_obj else (255, 255, 255)
+               detecttext_surface = detecttextfont.render(detecttext, True, detecttext_color)
+               detecttext_position = (buffer.get_width() // 2, buffer.get_height() - detecttextfont.size(detecttext)[1])
+               buffer.blit(detecttext_surface, detecttext_surface.get_rect(center=detecttext_position))
+
+
+               if persistant_obj and last_spoken != detecttext:
+                   subprocess.call(f"echo {detecttext} | festival --tts &", shell=True)
+                   last_spoken = detecttext
+               break
+
+
+       if not detected_any:
+           last_seen.append(None)
+           last_seen.pop(0)
+           if last_seen.count(None) == len(last_seen):
+               last_spoken = None
+
+
+       screen.blit(pygame.transform.rotate(buffer, args.rotation), (0, 0))
+       pygame.display.update()
+
+
+
+
+if __name__ == "__main__":
+   args = parse_args()
+   try:
+       main(args)
+   except KeyboardInterrupt:
+       capture_manager.stop()
 
 finally:
    GPIO.cleanup()
-
+```
 # First Milestone
 
 **Don't forget to replace the text below with the embedding for your milestone video. Go to Youtube, click Share -> Embed, and copy and paste the code to replace what's below.**
