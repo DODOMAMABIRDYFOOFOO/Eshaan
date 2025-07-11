@@ -62,28 +62,25 @@ This is the schematic design for the wiring of the buzzer and the ultrasonic sen
 
 
 **Code**
+```c++
+
 #!/usr/bin/python3
 import RPi.GPIO as GPIO
 import time
 
-
-# === GPIO Setup ===
 GPIO.setmode(GPIO.BCM)
 
 
-# Define pins
 PIN_TRIGGER = 19
 PIN_ECHO = 26
 PIN_BUZZER = 21
 
 
-# Setup pins
 GPIO.setup(PIN_TRIGGER, GPIO.OUT)
 GPIO.setup(PIN_ECHO, GPIO.IN)
 GPIO.setup(PIN_BUZZER, GPIO.OUT)
 
 
-# Initialize
 GPIO.output(PIN_TRIGGER, GPIO.LOW)
 GPIO.output(PIN_BUZZER, GPIO.LOW)
 
@@ -165,7 +162,7 @@ try:
 
 except KeyboardInterrupt:
    print("\nStopped by user.")
-
+```
 
 finally:
    GPIO.cleanup()
