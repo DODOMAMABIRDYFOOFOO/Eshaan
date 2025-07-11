@@ -42,14 +42,17 @@ For your second milestone, explain what you've worked on since your previous mil
 - In order for me to complete my final milestone I need to have completed the visual design of my glasses which includes 3d printing some frame to hold the long cable that supports the camera along with making the glasses look a lot neater in desgin. I also am planning that start on my modification
 s which includes adding vibrator to my ultrasonic sensor, I also decided to use a hat where I can put the bread board along with the raspberry pi. Inorder to put the raspberry pi and the breadboard I will 3d print a compartment for the hat to keep the two items. My third modification will be integrating AI into my glasses so it tells the user what the views are. For example, if they are in switzerland the AI will tell them "There is giant tree 3 feet in front of you and a beautiful lake swarming with life 10 feet infront of you." 
 
-<img width="853" height="592" alt="Screenshot 2025-07-11 at 11 48 22 AM" src="https://github.com/user-attachments/assets/594fc0eb-754f-490f-8b8f-35113b8d90f6" />
+<img width="500" height="300" alt="Screenshot 2025-07-11 at 11 48 22 AM" src="https://github.com/user-attachments/assets/594fc0eb-754f-490f-8b8f-35113b8d90f6" />
+
 This was the desing for where I was keeping the camera, as we can see from the design it has a place for the long cable along with a place for the picamera. 
 
-<img width="631" height="639" alt="Screenshot 2025-07-11 at 11 50 01 AM" src="https://github.com/user-attachments/assets/a7ea8e34-e214-4b2d-937c-690d1222d53b" />
+<img width="250" height="300" alt="Screenshot 2025-07-11 at 11 50 01 AM" src="https://github.com/user-attachments/assets/a7ea8e34-e214-4b2d-937c-690d1222d53b" />
+
 This was the design that failed and that cost me a picamera, as we can see it disrupted the metal thing attached to the camera making it not functional. 
 
 **Schematic Design for breadboard**
 <img width="513" height="342" alt="Screenshot 2025-07-11 at 11 55 26 AM" src="https://github.com/user-attachments/assets/86f27d32-8de2-4cac-9a81-42519ed92d9c" />
+
 This is the schematic design for the wiring of the buzzer and the ultrasonic sensor to my raspberry pi. I faced a challenge with not having the right resistors but I found out that it was just the ratio of the power that mattered for 1k:2k was the same as 100K:200K. 
 # First Milestone
 
