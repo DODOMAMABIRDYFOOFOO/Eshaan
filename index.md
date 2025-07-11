@@ -33,7 +33,7 @@ For your final milestone, explain the outcome of your project. Key details to in
 
 **Don't forget to replace the text below with the embedding for your milestone video. Go to Youtube, click Share -> Embed, and copy and paste the code to replace what's below.**
 
-<iframe width="560" height="315" src="[https://www.youtube.com/embed/y3VAmNlER5Y](https://www.youtube.com/watch?v=-fj1hPKtbZc)" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/-fj1hPKtbZc?si=z_3792kE-EdAotwj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 For your second milestone, explain what you've worked on since your previous milestone. You can highlight:
 - In my second milestone I was able to attach the camera to my glasses, and create a ultrasonic sensor to go along with the attachments. While attaching a camera may sound like a simple job, it wasn't. When I attached the camera to the 3d printed model I created(picture is below), it disrupted a metal piece on my camera which made it not functional. In order to fix this I got a new camera and this time did not repeat the mistake of adding a 3d-printed cover to the lenses. The ultrasonic sensor, on the other hand, was a lot easier since I am extremely familiar with breadboarding and coding these type of snesors. 
