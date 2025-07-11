@@ -51,6 +51,7 @@ This was the desing for where I was keeping the camera, as we can see from the d
 This was the design that failed and that cost me a picamera, as we can see it disrupted the metal thing attached to the camera making it not functional. 
 
 **Schematic Design for breadboard**
+
 <img width="513" height="342" alt="Screenshot 2025-07-11 at 11 55 26 AM" src="https://github.com/user-attachments/assets/86f27d32-8de2-4cac-9a81-42519ed92d9c" />
 
 This is the schematic design for the wiring of the buzzer and the ultrasonic sensor to my raspberry pi. I faced a challenge with not having the right resistors but I found out that it was just the ratio of the power that mattered for 1k:2k was the same as 100K:200K. 
