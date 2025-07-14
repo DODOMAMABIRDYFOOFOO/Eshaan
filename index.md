@@ -31,15 +31,13 @@ For your final milestone, explain the outcome of your project. Key details to in
 
 # Second Milestone
 
-**Don't forget to replace the text below with the embedding for your milestone video. Go to Youtube, click Share -> Embed, and copy and paste the code to replace what's below.**
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/-fj1hPKtbZc?si=z_3792kE-EdAotwj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-For your second milestone, explain what you've worked on since your previous milestone. You can highlight:
-- In my second milestone I was able to attach the camera to my glasses, and create a ultrasonic sensor to go along with the attachments. While attaching a camera may sound like a simple job, it wasn't. When I attached the camera to the 3d printed model I created(picture is below), it disrupted a metal piece on my camera which made it not functional. In order to fix this I got a new camera and this time did not repeat the mistake of adding a 3d-printed cover to the lenses. The ultrasonic sensor, on the other hand, was a lot easier since I am extremely familiar with breadboarding and coding these type of snesors. 
-- At first I expected this project to be mainly AR, but as I started building and building I realized this was more for detecting objects rather than having a screen in front of my eyes. I also thought that making the camera would be easy since I thought that I would get some prebuilt camera that could easily save pictures. 
-- Throughout this milestone I faced a major setback when my SD card had to be reflashed since my Tiger VNC and SSH weren't functioning properly. So we reflashed the SD card and I had to redownload all of my previous code and code the entire ultrasonic sensor again. Another minor challenge that I faced was my Libcamera and RPI vision modules weren't functioning properly. In order to solve this problem I reinstalled all of the pacakages needed to make Libcamera and RPI-Vision needed. Though I had these to problems the result turned out to be that my SSH and VNC were working properly unlike before and I made the connecting of the wires/cables to my computer much easier. 
-- In order for me to complete my final milestone I need to have completed the visual design of my glasses which includes 3d printing some frame to hold the long cable that supports the camera along with making the glasses look a lot neater in desgin. I also am planning that start on my modification
+In my second milestone I was able to attach the camera to my glasses, and create a ultrasonic sensor to go along with the attachments. While attaching a camera may sound like a simple job, it wasn't. When I attached the camera to the 3d printed model I created(picture is below), it disrupted a metal piece on my camera which made it not functional. In order to fix this I got a new camera and this time did not repeat the mistake of adding a 3d-printed cover to the lenses. The ultrasonic sensor, on the other hand, was a lot easier since I am extremely familiar with breadboarding and coding these type of snesors. 
+At first I expected this project to be mainly AR, but as I started building and building I realized this was more for detecting objects rather than having a screen in front of my eyes. I also thought that making the camera would be easy since I thought that I would get some prebuilt camera that could easily save pictures. 
+Throughout this milestone I faced a major setback when my SD card had to be reflashed since my Tiger VNC and SSH weren't functioning properly. So we reflashed the SD card and I had to redownload all of my previous code and code the entire ultrasonic sensor again. Another minor challenge that I faced was my Libcamera and RPI vision modules weren't functioning properly. In order to solve this problem I reinstalled all of the pacakages needed to make Libcamera and RPI-Vision needed. Though I had these to problems the result turned out to be that my SSH and VNC were working properly unlike before and I made the connecting of the wires/cables to my computer much easier. 
+In order for me to complete my final milestone I need to have completed the visual design of my glasses which includes 3d printing some frame to hold the long cable that supports the camera along with making the glasses look a lot neater in desgin. I also am planning that start on my modification
 s which includes adding vibrator to my ultrasonic sensor, I also decided to use a hat where I can put the bread board along with the raspberry pi. Inorder to put the raspberry pi and the breadboard I will 3d print a compartment for the hat to keep the two items. My third modification will be integrating AI into my glasses so it tells the user what the views are. For example, if they are in switzerland the AI will tell them "There is giant tree 3 feet in front of you and a beautiful lake swarming with life 10 feet infront of you." 
 
 <img width="500" height="300" alt="Screenshot 2025-07-11 at 11 48 22 AM" src="https://github.com/user-attachments/assets/594fc0eb-754f-490f-8b8f-35113b8d90f6" />
@@ -446,11 +444,9 @@ finally:
 ```
 # First Milestone
 
-**Don't forget to replace the text below with the embedding for your milestone video. Go to Youtube, click Share -> Embed, and copy and paste the code to replace what's below.**
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/CoPw9rdKQRo?si=n4YrnZoTD_a2I4BL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-For your first milestone, describe what your project is and how you plan to build it. You can include:
 In my first milestone it was mainly about getting the camera connected to my raspberry pi and to make it work. I was able to make the camera fully functional.  My computer was not being flexible with the raspberry pi that I had connected to it. My goal is to have the camera connected to the glasses and make sure that the display on the glasses show up. 
 Throughout my first milestone I encountered errors with my TigerVNC, and my raspberry pi not working. It was most likely something to do with my computer. In order to solve this problem I just had to reboot the coding software and it finally worked. For the Tiger VNC it was a much different story I still wasn't able to connect only to my raspberry pi. Despite these countless errors I was able to complete a working camera that can record for a short period of time. 
 
@@ -465,23 +461,57 @@ Here are the materials
 
 NO. Name Model/Specification OTY
 1 Buzzer 12mm 5V; Passive 1
+
+
 2 Electric capacitor 220uF 16V 1
+
+
 Micro USB 4-pin 90 1
+
+
 4 Power cable for micro-USB: 50cm 1
+
+
 5 Self-switch BxBmm 1
+
 Self-switch cap red 1
+
 KEY 7 Digitron display 3631AS 1
+
+
 IC Chip with core board STC8G2K1652 1
+
+
 g Chip capacitor 10uF 1
+
+
 POWER 10 LED dot matrix module 1088BS; 8x8mm 2
+
+
 11 Button 12x12x7.3mm 6
+
+
 12 Button caр A24 12x12x7.3mm 6
+
+
 COWTHCONT 13 PCB 7x9.8mm
+
+
 14 Screw M3x5mm 8
+
+
 15 Screw M3x8mm 2
+
+
 16 Copper column Double-pass: M3x9mm
+
+
 PO ATУTICAKO 2О: 4 САРО
+
+
 BEEP 17 Hexagonal column Single-head; 5+6mm 4
+
+
 18 Battery case AAA 1
 
 <img width="450" alt="Screenshot 2025-07-07 at 1 44 57 PM" src="https://github.com/user-attachments/assets/1027c8ef-a276-46bb-bba9-8023b1077bd3" />
