@@ -17,7 +17,6 @@ You should comment out all portions of your portfolio that you have not complete
   
 # Final Milestone
 
-**Don't forget to replace the text below with the embedding for your milestone video. Go to Youtube, click Share -> Embed, and copy and paste the code to replace what's below.**
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/F7M7imOVGug" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
@@ -542,9 +541,9 @@ Don't forget to place the link of where to buy each component inside the quotati
 
 | **Part** | **Note** | **Price** | **Link** |
 |:--:|:--:|:--:|:--:|
-| Item Name | What the item is used for | $Price | <a href="https://www.amazon.com/Arduino-A000066-ARDUINO-UNO-R3/dp/B008GRTSV6/"> Link </a> |
-| Item Name | What the item is used for | $Price | <a href="https://www.amazon.com/Arduino-A000066-ARDUINO-UNO-R3/dp/B008GRTSV6/"> Link </a> |
-| Item Name | What the item is used for | $Price | <a href="https://www.amazon.com/Arduino-A000066-ARDUINO-UNO-R3/dp/B008GRTSV6/"> Link </a> |
+|Glasses with Dark Lense | The glasses itself | $9 | <a href="[https://www.amazon.com/Arduino-A000066-ARDUINO-UNO-R3/dp/B008GRTSV6/](https://www.amazon.com/Simple-Classic-Sunglasses-Polarized-Protection/dp/B0F1B5KJQT/ref=sr_1_10?crid=1XOQMHY4GRJY2&dib=eyJ2IjoiMSJ9.SLSt0x6ZrjeCE-exHSN2SXjmtPjX1IvCP10jr0jexZ0Z_i1H7oHuhdZgy55XIi4GNohUgIhXA9gHiFN2__lFcoLTb2Vw0ifjl0gY7vhjanhowXVSmds6E3hn4_mADfDGpdVur4_g8AvGz8yTDcTPdyC5x4BLfx8h4OVS2uJWxg_5rNjY-EUX2JtsjcWa4ikId9rCMTQLuUn_wR_57PdhmUW2vRxNylo4S-XdWYBqUUIXFaYUX5znLSULrmNgGWlqHmqJW87mbHnbbevrjmXhb5-3ah2neLafNYjFM0hjbzk.HWV8VDlj1UtiWy7FwhN9TOxutfI_T457sdIcK9-9bwg&dib_tag=se&keywords=Black+Matte+Black+Frame%2FGrey+Lens&qid=1752527241&sprefix=black+matte+black+frame%2Fgrey+lens%2Caps%2C245&sr=8-10)"> Link </a> |
+| Raspberry Pi 4 + Canakit | It was used for the backend and running my code | $149 | <a href="[https://www.amazon.com/Arduino-A000066-ARDUINO-UNO-R3/dp/B008GRTSV6/](https://www.amazon.com/CanaKit-Raspberry-4GB-Starter-Kit/dp/B08956GVXN/ref=sr_1_3?crid=1B7S6IDV1U9P7&dib=eyJ2IjoiMSJ9.4wZGiZcG7IfVeIs8ylcbr2OWb6dH50gzNdgVi5k-In4fdTS4pr_55N4uBsdWFVWPS5BhQck8BMzB8ZD2cthkas81OPwd8xoSWSHaCHgoxqg4jY8VUPl8TosZZ0d7yrt45pp3fsDvWQ5QnoLD-qiPh-HN9sM_BVIt71hCQhLaLVM7M28ia17ZFshjGdtdhCRcGClQkOP2Y3_dJV1cGUt404kOap5zzNeNLSm8H_6Rjx0.DB-V_-kn9VFOEc3ugst8pdtXd50kgb4ycPrB6DWYcIU&dib_tag=se&keywords=raspberry%2Bpi%2B4&qid=1752594912&sprefix=raspberry%2Bpi%2B4%2Caps%2C196&sr=8-3&th=1)"> Link </a> |
+| OLED Screen| Displaying information on the lenses | $28.99 | <a href="https://www.amazon.com/dp/B0B8N46G24?psc=1&smid=A50C560NZEBBE&ref_=chk_typ_imgToDp"> Link </a> |
 
 # Other Resources/Examples
 One of the best parts about Github is that you can view how other people set up their own work. Here are some past BSE portfolios that are awesome examples. You can view how they set up their portfolio, and you can view their index.md files to understand how they implemented different portfolio components.
