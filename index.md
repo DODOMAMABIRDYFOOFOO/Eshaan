@@ -27,6 +27,10 @@ For your final milestone, explain the outcome of your project. Key details to in
 - What you hope to learn in the future after everything you've learned at BSE
 
 
+# Third Milestone
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/-fj1hPKtbZc?si=z_3792kE-EdAotwj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+In my third milestone I was able to integrate gemini into my code along with adding text to speech to announce gemini's response. While I was working with gemini I had to create 3 accounts with different API Keys because I kept overusing gemini and reached about 150 requests per day. Throughout my third milestone I faced many challenges inculding the text to speech not speaking in english along with the speaker not being connnected to the raspberry pi. In order to solve these problems I had to run numerous commands in the terminal. For my next milestone I will make the text to speech voice less choppy, add an app that can be connected to my glasses, along with adding a OLED screen that displays necessary information. 
 
 # Second Milestone
 
