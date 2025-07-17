@@ -11,14 +11,11 @@ You should comment out all portions of your portfolio that you have not complete
 |:--:|:--:|:--:|:--:|
 | Eshaan R | Sacred Heart Middle School | Electrical Engineering | Incoming 8th Grader
 
-**Replace the BlueStamp logo below with an image of yourself and your completed project. Follow the guide [here](https://tomcam.github.io/least-github-pages/adding-images-github-pages-site.html) if you need help.**
 
 ![Headstone Image](EshaanR.png)
   
 # Final Milestone
 
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/F7M7imOVGug" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 For your final milestone, explain the outcome of your project. Key details to include are:
 - What you've accomplished since your previous milestone
@@ -29,8 +26,101 @@ For your final milestone, explain the outcome of your project. Key details to in
 
 # Third Milestone
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/-fj1hPKtbZc?si=z_3792kE-EdAotwj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/VRiodOMrIRw?si=6pVeFEuWR9AvuW78" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 In my third milestone I was able to integrate gemini into my code along with adding text to speech to announce gemini's response. While I was working with gemini I had to create 3 accounts with different API Keys because I kept overusing gemini and reached about 150 requests per day. Throughout my third milestone I faced many challenges inculding the text to speech not speaking in english along with the speaker not being connnected to the raspberry pi. In order to solve these problems I had to run numerous commands in the terminal. For my next milestone I will make the text to speech voice less choppy, add an app that can be connected to my glasses, along with adding a OLED screen that displays necessary information. 
+
+**Code**
+
+This is the code for the gemini integration:  
+```c++
+
+import cv2
+import time
+from picamera2 import Picamera2
+import google.generativeai as genai
+import subprocess
+
+# Configure your Google API key
+genai.configure(api_key="AIzaSyDqy4MH05pQtURu17abpys3fQ9Ju0uG6RQ")
+
+model = genai.GenerativeModel('gemini-1.5-flash')
+ 
+# Test API connection
+print("Testing API...")
+try:
+    test_response = model.generate_content("Hello test")
+    print(f" API test successful: {test_response.text}")
+except Exception as e:
+    print(f" API test failed: {e}")
+    exit(1)
+
+picam2 = Picamera2()
+picam2.preview_configuration.main.size = (640, 480)
+picam2.preview_configuration.main.format = "RGB888"
+picam2.configure("preview")
+picam2.start()
+
+def speak_text(text):
+    print(f" Speaking: {text}")
+    # Smooth male voice settings
+    subprocess.run([
+        'espeak', 
+        '-v', 'en+m2',      # Male voice variant 2
+        '-s', '200',        # Slower speed for smoother speech
+        '-p', '78',         # Lower pitch for deeper male voice
+        '-a', '100',        # Full volume
+        '-g', '1',         # Longer gaps between words (reduces choppiness)
+        '-k', '5',          # Capital letter indication (softer)
+        '--stdin'           # Better processing for longer text
+    ], input=text, text=True)
+
+def capture_image(path="/tmp/gemini_frame.jpg"):
+    frame = picam2.capture_array()
+    cv2.imwrite(path, frame)
+    print(f" Image saved to {path}")
+    return path
+
+def analyze_with_gemini(image_path, prompt="Describe the image"):
+    print(f"Reading image from {image_path}")
+    try:
+        with open(image_path, "rb") as img_file:
+            image_data = img_file.read()
+        
+        print(f"Image size: {len(image_data)} bytes")
+        
+        response = model.generate_content([
+            prompt,
+            {
+                "mime_type": "image/jpeg",
+                "data": image_data
+            }
+        ])
+        return response.text
+    except Exception as e:
+        print(f" Gemini analysis failed: {e}")
+        return f"Error analyzing image: {e}"
+
+try:
+    while True:
+        print("\n" + "="*50)
+        print("Capturing frame...")
+        img_path = capture_image()
+
+        print("Sending to Gemini...")
+        result = analyze_with_gemini(img_path, 
+            "If there is a math problem being shown analyze the question and then give the answer to the question don't just say the question without any answer, if it is multiple choice then look at all the answers and based on that give me an answer, remember to look at the problem carefully, also when talking don't say the symbols just say the words and only words if given problems without solutions then still solve it, remeber that if the question is a history or a reading comprehension or anything that is in a school curriculum then just solve the problems don't put in /sub/sub * and anything that has symbols give me a straight up response don't put any symbols in the response just the answer; if there is no math problem then say what is happening but at the end don't say there is no math problem present")
+
+        print("Gemini says:")
+        print(result)
+
+        speak_text(result)
+        print("⏱️  Waiting 2 second...")
+        time.sleep(2)
+
+except KeyboardInterrupt:
+    picam2.stop()
+    print("\n Stopped.")
+```
 
 # Second Milestone
 
