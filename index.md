@@ -1,5 +1,5 @@
 # Smart Glasses
-This is a glasses that integrates gemini to solve hard math problems along with describing what it is looking at. It is actvated through an app that uses voice assistant to help them controls what command you want to input. Along with that it uses an OLED screen to display necessary information. 
+This is a smart glass that integrates gemini to solve hard math problems along with describing what it is looking at. It is actvated through an app that uses voice assistant to help them controls what command you want to input. Along with that it uses an OLED screen to display necessary information. 
 
 | **Engineer** | **School** | **Area of Interest** | **Grade** |
 |:--:|:--:|:--:|:--:|
